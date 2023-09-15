@@ -1,4 +1,4 @@
-//import { hash } from "bcryptjs";
+import { hash } from "bcryptjs";
 
 interface IUserRequest {
   name: string;
@@ -13,10 +13,11 @@ class CreateUserService {
       throw new Error("Email incorreto");
     }
 
-    //const passwordHash = await hash(password, 8);
-
+    const passwordHash = await hash(password, 8);
+    console.log(passwordHash);
+    
     var vuser ={
-        name:name, email:email, admin:false
+        name:"name", email:"email", admin:false, password:passwordHash
     };
 
     return vuser;
